@@ -1,37 +1,29 @@
-Write a PL/SQL procedure to insert a student record into the Student table.
+CREATE OR REPLACE PROCEDURE INSERT_STUDENT (
+    StudentID     IN NUMBER,
+    StudentName   IN VARCHAR2,
+    DOB           IN DATE,
+    Gender        IN VARCHAR2,
+    DepartmentID  IN NUMBER
+)
+AS
+BEGIN
+    INSERT INTO Student (
+        StudentID,
+        StudentName,
+        DOB,
+        Gender,
+        DepartmentID
+    )
+    VALUES (
+        StudentID,
+        StudentName,
+        DOB,
+        Gender,
+        DepartmentID
+    );
 
-Problem Statement
-Create a PL/SQL procedure named:
+    COMMIT;
 
-INSERT_STUDENT
-The procedure should accept the following parameters:
-
-StudentID
-StudentName
-DOB
-Gender
-DepartmentID
-The procedure must insert these values into the Student table.
-
-Student Table
-The table contains:
-
-Column	Datatype
-StudentID	NUMBER(5)
-StudentName	VARCHAR2(50)
-DOB	DATE
-Gender	VARCHAR2(10)
-DepartmentID	NUMBER(5)
-Requirements
-Your procedure must:
-
-Use CREATE OR REPLACE PROCEDURE.
-Use the procedure name INSERT_STUDENT.
-Accept StudentID as a parameter.
-Accept StudentName as a parameter.
-Accept DOB as a parameter.
-Accept Gender as a parameter.
-Accept DepartmentID as a parameter.
-Use an INSERT INTO Student statement.
-Insert all five student details.
-End the procedure correctly.
+    DBMS_OUTPUT.PUT_LINE('Student record inserted successfully.');
+END INSERT_STUDENT;
+/
